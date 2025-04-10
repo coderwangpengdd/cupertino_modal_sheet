@@ -69,6 +69,7 @@ class _BooksAppState extends State<BooksApp> {
       BuildContext context, Book book, Function(BuildContext)? onPressed) {
     showCupertinoModalSheet(
       context: context,
+      barrierColor: const Color(0xFF110C16).withValues(alpha: 0.8),
       builder: (context) => BookDetailsScreen(
         book: book,
         onPressed: onPressed == null ? null : () => onPressed(context),

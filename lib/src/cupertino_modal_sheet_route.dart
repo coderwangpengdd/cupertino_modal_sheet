@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const double sheetOffset = 17;
+const double sheetOffset = 12;
 const double displayCornerRadius = 38.5;
 const double sheetCornerRadius = 16;
 const double scaleFactor = 1 / 12;
@@ -129,6 +129,7 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
       final scale = 1 - secValue * scaleFactor;
       // final r = paddingTop > 30 ? displayCornerRadius : 0.0;
       // final radius = r - secValue * (r - sheetCornerRadius);
+      // debugPrint("radius : ${radius}");
       final clipChild = ClipRRect(
         borderRadius: BorderRadius.circular(sheetCornerRadius),
         child: child,
