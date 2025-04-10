@@ -1,11 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const double sheetOffset = 10;
+const double sheetOffset = 17;
 const double displayCornerRadius = 38.5;
-const double sheetCornerRadius = 10;
+const double sheetCornerRadius = 16;
 const double scaleFactor = 1 / 12;
 const double breakpointWidth = 800;
 const Size maxSize = Size(700, 1000);
@@ -39,7 +40,7 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
   }) : super(
           pageBuilder: (_, __, ___) => const SizedBox.shrink(),
           opaque: false,
-          barrierColor: kCupertinoModalBarrierColor,
+          barrierColor: Colors.transparent,
         );
 
   /// A builder that builds the widget tree for the [CupertinoModalSheetRoute].
@@ -71,7 +72,10 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
       );
     }
     if (isFirst) {
-      return builder(context);
+      return DecoratedBox(
+        decoration: BoxDecoration(color: Colors.red),
+        child: builder(context),
+      );
     } else {
       final paddingTop = _paddingTop(context);
       return Center(
@@ -126,10 +130,10 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
     if (isFirst) {
       final offset = secValue * paddingTop;
       final scale = 1 - secValue * scaleFactor;
-      final r = paddingTop > 30 ? displayCornerRadius : 0.0;
-      final radius = r - secValue * (r - sheetCornerRadius);
+      // final r = paddingTop > 30 ? displayCornerRadius : 0.0;
+      // final radius = r - secValue * (r - sheetCornerRadius);
       final clipChild = ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(sheetCornerRadius),
         child: child,
       );
       var transitionChild =
