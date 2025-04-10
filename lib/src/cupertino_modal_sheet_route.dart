@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 const double sheetOffset = 17;
@@ -40,7 +39,7 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
   }) : super(
           pageBuilder: (_, __, ___) => const SizedBox.shrink(),
           opaque: false,
-          barrierColor: Colors.transparent,
+          barrierColor: kCupertinoModalBarrierColor,
         );
 
   /// A builder that builds the widget tree for the [CupertinoModalSheetRoute].
@@ -72,10 +71,7 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
       );
     }
     if (isFirst) {
-      return DecoratedBox(
-        decoration: BoxDecoration(color: Colors.red),
-        child: builder(context),
-      );
+      return builder(context);
     } else {
       final paddingTop = _paddingTop(context);
       return Center(
