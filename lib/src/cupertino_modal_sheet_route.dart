@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 const double sheetOffset = 17;
@@ -35,11 +36,11 @@ class CupertinoModalSheetRoute<T> extends PageRouteBuilder<T> {
     super.barrierLabel,
     super.maintainState = true,
     super.fullscreenDialog = true,
+    super.barrierColor,
     this.firstTransition = CupertinoModalSheetRouteTransition.none,
   }) : super(
           pageBuilder: (_, __, ___) => const SizedBox.shrink(),
           opaque: false,
-          barrierColor: kCupertinoModalBarrierColor,
         );
 
   /// A builder that builds the widget tree for the [CupertinoModalSheetRoute].
